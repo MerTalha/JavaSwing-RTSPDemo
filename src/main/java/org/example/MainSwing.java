@@ -53,20 +53,18 @@ public class MainSwing extends JFrame {
             }
         });
 
-        // Uygulama kapatıldığında medya oynatıcısı kaynağını serbest bırakın
         addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosing(WindowEvent e) {
                 mediaPlayer.release();
                 System.out.println("Uygulama kapandı");
-                System.exit(0); // Uygulamayı tamamen kapat
+                System.exit(0); 
             }
         });
 
 
 
     }
-
     private static void setVlcParams() {
         vlcArgs = new ArrayList<String>();
         vlcArgs.add("--no-plugins-cache");
@@ -78,30 +76,12 @@ public class MainSwing extends JFrame {
         vlcArgs.add("--live-caching=0");
         vlcArgs.add("--no-overlay");
         vlcArgs.add("--clock-jitter=0");
-        // vlcArgs.add("--video-filter=sharpen");
-        // vlcArgs.add("--contrast = 4");
-        // vlcArgs.add("--realrtsp-caching=0");
         vlcArgs.add("--video-filter=adjust");
         vlcArgs.add(" --brightness=1.8 ");
-        // vlcArgs.add("bits = 1024");
         vlcArgs.add("--sout-keep");
-        // vlcArgs.add("--scale=2");
-        //vlcArgs.add("--fps=4");
-        // vlcArgs.add("--sout-mux-caching=10");
-        // vlcArgs.add("--sout-mp4-faststart");
         vlcArgs.add(
                 ":sout = #transcode{vcodec=x264,vb=800,scale=0.20,acodec=none,fps=24}:display :no-sout-rtp-sap :no-sout-standard-sap :ttl=1  :sout-keep");
-        //// --contrast <float> Image contrast (0-2)
-        // --brightness <float> Image brightness (0-2)
-        // --hue <integer> Image hue (0-360)
-        // --saturation <float> Image saturation (0-3)
-        // --gamma <float> Image gamma (0-10)
-        // --brightness-threshold, --no-brightness-threshold
-        // Brightness threshold (default disabled)
-        // vlcArgs.add("--video-filter adjust --brightness 1.8 --contrast 1.5");
-        // vlcArgs.add(":contrast 1.5");
     }
-
     public static void main(String[] args) {
         SwingUtilities.invokeLater(MainSwing::new);
     }
