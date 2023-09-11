@@ -38,7 +38,7 @@ public class MainSwing extends JFrame {
 
         mediaPlayer.setVideoSurface(mediaPlayerFactory.newVideoSurface(videoSurface));
 
-        String rtspUrl = "rtsp://192.168.1.10:554/user=admin&password=&channel=1&stream=0.sdp?";
+        String rtspUrl = "rtsp://rtspstream.com/pattern";
 
         mediaPlayer.playMedia(rtspUrl);
 
@@ -58,11 +58,9 @@ public class MainSwing extends JFrame {
             public void windowClosing(WindowEvent e) {
                 mediaPlayer.release();
                 System.out.println("Uygulama kapandı");
-                System.exit(0); 
+                System.exit(0);
             }
         });
-
-
 
     }
     private static void setVlcParams() {
